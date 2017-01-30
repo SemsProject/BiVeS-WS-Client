@@ -1,0 +1,34 @@
+= BiVeS Web Service Client Library=
+This is a Java client library for the [bivesws:wiki BiVeS Web Service].
+
+== Usage ==
+* how to execute a ComparisonRequest
+* how to execute a SingleFileRequest
+* [http://jdoc.sems.uni-rostock.de/bivesWsClient/constant-values.html all constant values]
+
+Use the client library in your maven project:
+{{{
+#!xml
+<dependency>
+    <groupId>de.unirostock.sems</groupId>
+    <artifactId>BiVeS-WS-Client</artifactId>
+    <version>$VERSION</version>
+</dependency>
+}}}
+
+== Build ==
+* learn how to BuildBivesWebServiceClient
+* download latest binaries from http://bin.sems.uni-rostock.de/BiVeS-WS-Client/
+* code: source:src/main/java/de/unirostock/sems/bives/webservice/client 
+{{{
+git clone git://sems.uni-rostock.de/bivesws-client
+}}}
+
+== Starting Points ==
+
+ * TracGuide --  Built-in Documentation
+ * [http://trac.edgewall.org/ The Trac project] -- Trac Open Source Project
+ * [http://trac.edgewall.org/wiki/TracFaq Trac FAQ] -- Frequently Asked Questions
+ * TracSupport --  Trac Support
+
+For a complete list of local wiki pages, see TitleIndex.

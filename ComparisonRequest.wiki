@@ -1,0 +1,57 @@
+= Comparison Request =
+* compare versions of computational models
+* see also source:src/test/java/de/unirostock/sems/bives/webservice/client/ClientComparisonExample.java 
+
+To initiate a comparison request create an object of the type [source:src/main/java/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.java BivesComparisonRequest] ([http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.html JDOC]), passing the link to the two versions of a model or the XML representations of these models:
+
+{{{
+#!java
+BivesComparisonRequest request = new BivesComparisonRequest ("http://.../path/to/model2.xml", "http://.../path/to/model2.xml");
+// alternatively
+request = new BivesComparisonRequest ("<sbml> .. </sbml>", "<sbml> .. </sbml>");
+}}}
+
+afterwards you need to define the operations to be executed on the web server by [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesRequest.html#addCommand%28java.lang.String%29 adding commands] (commands are available as static fields in [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonCommands.html#field_summary BivesComparisonRequest]). For example, to ''force SBML'' comparison (skip detection of document type) and compute the ''highlighted reaction network encoded in GraphML'' (see [bives-core:ReactionNetwork Reaction Network] and [bives-core:GraphmlFormatDescription GraphML]) and the report of the'' differences encoded in HTML'' (see also [bives-core:TypeSetting#HTML report] and [bives-core:ReportHtml HTML]) you would do the following:
+
+{{{
+#!java
+request.addCommand(BivesComparisonRequest.COMMAND_FORCE_SBML);
+request.addCommand(BivesComparisonRequest.COMMAND_REACTIONS_GRAPHML);
+request.addCommand(BivesComparisonRequest.COMMAND_REPORT_HTML);
+}}}
+
+(see also [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/constant-values.html all constant values])
+
+To perform the request you need to instantiate a [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html BivesWs] object by passing the URL to the BiVeS web service you want to use (here we're using the web service of the [https://sems.uni-rostock.de/ SEMS project], available at http://bives.sems.uni-rostock.de/). This object is able to communicate to the web service, just pass the request to the [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html#performRequest%28de.unirostock.sems.bives.webservice.client.BivesComparisonRequest%29 performRequest] method. The result will be a [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html BivesComparisonResponse]:
+
+{{{
+#!java
+BivesWs bives = new HttpBivesClient("http://bives.sems.uni-rostock.de/");
+BivesComparisonResponse result = bives.performRequest(request);
+}}}
+
+The returned [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html BivesComparisonResponse] object provides methods to get the result of that response. Here for example we get the requested HTML report by passing the '''HTML report command''' to the [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#getResult(java.lang.String) getResult] method:
+
+{{{
+#!java
+String htmlReport = result.getResult (BivesComparisonResponse.COMMAND_REPORT_HTML);
+}}}
+
+That's the usual work flow, but the client also has some more methods which give you access to some other information.
+
+== Special Methods ==
+
+Besides the [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#getResult(java.lang.String) getResult] method of the [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html BivesComparisonResponse] object there are some other methods, see [#SpecialMethods].
+
+=== Errors ===
+To check if an error occurred during the computations on the server you can as the `response` whether it [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#hasError() hasError]s. If that's the case, you'll get them by calling [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#getErrors() getErrors]:
+
+{{{
+#!java
+if (result.hasError ())
+{
+	for (String err : result.getErrors ())
+		System.err.println ("ERROR: " + err);
+	System.exit (1);
+}
+}}}
