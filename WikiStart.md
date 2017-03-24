@@ -28,5 +28,5 @@ Build
 * code: /src/main/java/de/unirostock/sems/bives/webservice/client
 
 ```
-git clone git://sems.uni-rostock.de/bivesws-client
+git clone git@github.com:SemsProject/BiVeS-WS-Client.git
 ```
