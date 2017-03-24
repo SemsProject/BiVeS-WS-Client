@@ -4,7 +4,7 @@ Build BiVeS Web Service Client
 When you've cloned the source code:
 
 ```sh
-git clone git://sems.uni-rostock.de/bivesws-client
+git clone git@github.com:SemsProject/BiVeS-WS-Client.git
 ```
 
 There are two supported options to build this project:
