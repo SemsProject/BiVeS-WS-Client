@@ -2,9 +2,9 @@ Single File Request
 ====================
 
 * get information about single files
-* see also /src/test/java/de/unirostock/sems/bives/webservice/client/ClientSingleFileExample.java 
+* see also [/src/test/java/de/unirostock/sems/bives/webservice/client/ClientSingleFileExample.java](https://github.com/SemsProject/BiVeS-WS-Client/tree/master/src/test/java/de/unirostock/sems/bives/webservice/client/ClientSingleFileExample.java)
 
-To initiate a single file request create an object of the type [Bives/SingleFileRequest](/src/main/java/de/unirostock/sems/bives/webservice/client//BivesSingleFileRequest.java) ([JDOC](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileCommands.html)), passing the link to the model or the XML representation of the model:
+To initiate a single file request create an object of the type [Bives/SingleFileRequest](https://github.com/SemsProject/BiVeS-WS-Client/tree/master/src/main/java/de/unirostock/sems/bives/webservice/client/BivesSingleFileRequest.java) ([JDOC](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileCommands.html)), passing the link to the model or the XML representation of the model:
 
 ```java
 BivesSingleFileRequest request = new BivesSingleFileRequest("http://.../path/to/model.xml");
@@ -22,7 +22,8 @@ request.addCommand(BivesSingleFileRequest.COMMAND_SINFLE_FLATTEN);
 
 (see also [all constant values](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/constant-values.html))
 
-To perform the request you need to instantiate a [BivesWs](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html) object by passing the URL to the BiVeS web service you want to use (here we're using the web service of the [SEMS project](https://sems.uni-rostock.de/), available at http://bives.sems.uni-rostock.de/). This object is able to communicate to the web service, just pass the request to the [performRequest](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html//#performRequest%28de.unirostock.sems.bives.webservice.client.//BivesSingleFileRequest%29) method. The result will be a [Bives/SingleFileResponse](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileResponse.html):
+To perform the request you need to instantiate a [BivesWs](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html) object by passing the URL to the BiVeS web service you want to use (here we're using the web service of the [SEMS project](https://sems.uni-rostock.de/), available at <http://bives.sems.uni-rostock.de/>).
+This object is able to communicate to the web service, just pass the request to the [performRequest](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html#performRequest%28de.unirostock.sems.bives.webservice.client.BivesSingleFileRequest%29) method. The result will be a [Bives/SingleFileResponse](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileResponse.html):
 
 ```java
 BivesWs bives = new HttpBivesClient("http://bives.sems.uni-rostock.de/");
@@ -40,11 +41,11 @@ That is the usual work flow, but the client also has some more methods which pre
 Special Methods 
 ----------------
 
-Besides the [getResult](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html//#getResult(java.lang.String)) method of the [Bives/SingleFileResponse](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileResponse.html) object there are some other methods:
+Besides the [getResult](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#getResult(java.lang.String)) method of the [Bives/SingleFileResponse](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileResponse.html) object there are some other methods:
 
 ### Errors 
 
-To check if an error occurred during the computations on the server you can as the `response` whether it [hasError](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html//#hasError())s. If that's the case, you'll get them by calling [getErrors](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html//#getErrors()):
+To check if an error occurred during the computations on the server you can as the `response` whether it [hasError](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#hasError())s. If that's the case, you'll get them by calling [getErrors](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html#getErrors()):
 
 ```java
 if (result.hasError ())
@@ -61,13 +62,13 @@ The is an object meant for people who are doing some analysis. The String return
 
 As of version 1.3 of the web service this list contains some node statistics in the `nodestats` field and some other fields depending on the document type:
 * for CellML documents it also returns
- * `containsImports`: a boolean flag that is true if the model contains imports
- * `modelName`: the name of the model
+  * `containsImports`: a boolean flag that is true if the model contains imports
+  * `modelName`: the name of the model
 * for SBML documents it also returns
- * `sbmlLevel`: the SBML level
- * `sbmlVersion`: the SBML version
- * `modelId`: the id of the model
- * `modelName`: the name of the model
+  * `sbmlLevel`: the SBML level
+  * `sbmlVersion`: the SBML version
+  * `modelId`: the id of the model
+  * `modelName`: the name of the model
 
 This list is more or less arbitrary, we may add other information if there is a need for anyone. Feel free to [contact one of us](https://sems.uni-rostock.de/people/).
 The meta data information is parsed by the client, so you can easily get this information by calling:
@@ -95,11 +96,11 @@ System.out.println ("there are " + nodeStats.get ("component") + " component nod
 
 ### Document Type 
 
-The BiVeS web service is also able to detect the type of the document of interest. Thus, if you send the [http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileCommands.html#COMMAND_DOCUMENT_TYPE `COMMAND_DOCUMENT_TYPE`] command you can receive the document type as a list from the response object by calling:
+The BiVeS web service is also able to detect the type of the document of interest. Thus, if you send the [`COMMAND_DOCUMENT_TYPE`](http://jdoc.sems.uni-rostock.de/BiVeS-WS-Client/de/unirostock/sems/bives/webservice/client/BivesSingleFileCommands.html#COMMAND_DOCUMENT_TYPE) command you can receive the document type as a list from the response object by calling:
 
 ```java
 System.out.println ("this is of type " + result.getDocumentTypes ());
 ```
 
-In case of CellML models this list will contain the entries "`XML`" and "`CellML`", because it is valid XML and a valid CellML document. An SBML document will probably return "`XML`" and "`SBML`".
+In case of CellML models this list will contain the entries `XML` and `CellML`, because it is valid XML and a valid CellML document. An SBML document will probably return `XML` and `SBML`.
 
