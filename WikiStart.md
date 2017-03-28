@@ -25,7 +25,7 @@ Build
 
 * learn how to [Build BiVeS WebService-Client](BuildBivesWebServiceClient)
 * download latest binaries from [http://bin.sems.uni-rostock.de/BiVeS-WS-Client/](http://bin.sems.uni-rostock.de/BiVeS-WS-Client/)
-* code: /src/main/java/de/unirostock/sems/bives/webservice/client
+* code: [/src/main/java/de/unirostock/sems/bives/webservice/client](https://github.com/SemsProject/BiVeS-WS-Client/tree/master/src/main/java/de/unirostock/sems/bives/webservice/client)
 
 ```
 git clone git@github.com:SemsProject/BiVeS-WS-Client.git
