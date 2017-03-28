@@ -2,9 +2,9 @@ Comparison Request
 ===================
 
 * compare versions of computational models
-* see also /src/test/java/de/unirostock/sems/bives/webservice/client/ClientComparisonExample.java 
+* see also [/src/test/java/de/unirostock/sems/bives/webservice/client/ClientComparisonExample.java](https://github.com/SemsProject/BiVeS-WS-Client/tree/master/src/test/java/de/unirostock/sems/bives/webservice/client/ClientComparisonExample.java)
 
-To initiate a comparison request create an object of the type [Bives/ComparisonRequest](/src/main/java/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.java) ([JDOC](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.html)), passing the link to the two versions of a model or the XML representations of these models:
+To initiate a comparison request create an object of the type [Bives/ComparisonRequest](https://github.com/SemsProject/BiVeS-WS-Client/tree/master/src/main/java/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.java) ([JDOC](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonRequest.html)), passing the link to the two versions of a model or the XML representations of these models:
 
 ```java
 BivesComparisonRequest request = new BivesComparisonRequest ("http://.../path/to/model2.xml", "http://.../path/to/model2.xml");
@@ -22,7 +22,8 @@ request.addCommand(BivesComparisonRequest.COMMAND_REPORT_HTML);
 
 (see also [all constant values](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/constant-values.html))
 
-To perform the request you need to instantiate a [BivesWs](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html) object by passing the URL to the /BiVeS web service you want to use (here we're using the web service of the [SEMS project](https://sems.uni-rostock.de/), available at http://bives.sems.uni-rostock.de/). This object is able to communicate to the web service, just pass the request to the [performRequest](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html//#performRequest%28de.unirostock.sems.bives.webservice.client.//BivesComparisonRequest%29) method. The result will be a [Bives/ComparisonResponse](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html):
+To perform the request you need to instantiate a [BivesWs](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html) object by passing the URL to the /BiVeS web service you want to use (here we're using the web service of the [SEMS project](https://sems.uni-rostock.de/), available at <http://bives.sems.uni-rostock.de/>).
+This object is able to communicate to the web service, just pass the request to the [performRequest](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesWs.html#performRequest%28de.unirostock.sems.bives.webservice.client.//BivesComparisonRequest%29) method. The result will be a [Bives/ComparisonResponse](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html):
 
 ```java
 BivesWs bives = new HttpBivesClient("http://bives.sems.uni-rostock.de/");
@@ -39,7 +40,7 @@ That's the usual work flow, but the client also has some more methods which give
 
 Special Methods 
 ----------------
-Besides the [getResult](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html/#getResult(java.lang.String)) method of the [Bives/ComparisonResponse](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html) object there are some other methods, see [None](#special-methods).
+Besides the [getResult](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesResponse.html/#getResult(java.lang.String)) method of the [Bives/ComparisonResponse](http://jdoc.sems.uni-rostock.de/BiVeS-W/S-Client/de/unirostock/sems/bives/webservice/client/BivesComparisonResponse.html) object there are some other methods, see [Special methods](#special-methods).
 
 ### Errors 
 
