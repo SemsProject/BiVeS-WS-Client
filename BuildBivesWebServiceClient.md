@@ -1,10 +1,10 @@
-Build BiVeS Web Service Client 
+Build BiVeS WebApp Client 
 ================================
 
 When you've cloned the source code:
 
 ```sh
-git clone git@github.com:SemsProject/BiVeS-WS-Client.git
+git clone https://github.com/binfalse/BiVeS-WebApp-Client
 ```
 
 There are two supported options to build this project:
